@@ -4,6 +4,12 @@ const request = require('supertest');
 var {app} = require('./../server');
 const {Todo} = require('./../models/todo');
 
+const todos = [{
+    text:'First test todo'
+},{
+    text:'Second test todo'
+}];
+
 beforeEach((done)=>{ //empties the database before test
     Todo.deleteMany({}).then(()=>{ //used deleteMany instead of remove because remove is deprecated.
         done();
