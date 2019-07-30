@@ -55,6 +55,16 @@ UserSchema.methods.generateAuthToken = function (){
     });
 };
 
+UserSchema.methods.removeToken = function (token){
+    var user = this;
+    return user.update({
+        $pull:{
+            tokens:{ token}
+        }
+    });
+     
+};
+
 UserSchema.statics.findByToken = function(token){ //3amla zy el static method fel java
     var User = this;
     var decoded;
